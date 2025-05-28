@@ -71,7 +71,7 @@ Project-Asclepius/
 
 ---
 
-From here, the documentation outlines the technical architecture, design choices, and methodologies employed in the prototype of Project Asclepius, focusing on the **Bio-Innovation Horizon Scanning & Synthesis Engine** and the **Intelligent Insight Delivery & Visualization Interface**. The goal is to provide 2070 Health with unparalleled foresight into the future of medicine and patient care.
+Below outlines the technical architecture, design choices, and methodologies employed in the prototype of Project Asclepius, focusing on the **Bio-Innovation Horizon Scanning & Synthesis Engine** and the **Intelligent Insight Delivery & Visualization Interface**. The goal is to provide 2070 Health with unparalleled foresight into the future of medicine and patient care.
 
 ---
 
