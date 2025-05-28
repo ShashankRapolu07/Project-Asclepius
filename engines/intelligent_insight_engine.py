@@ -1012,7 +1012,6 @@ Begin generating plot specifications now:
                     "user_query": user_query,
                     "retrieved_context_str": context_str,
                     "max_plots": max_plots,
-                    "current_date": datetime.date.today().isoformat(),
                     "plot_tool_descriptions": plot_tool_descriptions
                 }).strip()
                 cleaned = self._clean_json_str(raw)
