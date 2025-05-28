@@ -1,6 +1,6 @@
 # Project Asclepius: Technical Blueprint (Prototype Phase)
 
-> Try directly at [Project Asclepius Streamlit App](https://project-asclepius-xxt5ek52wchjcbvpyvvmhb.streamlit.app/)
+> Try directly at [Project Asclepius Streamlit App](https://project-asclepius-gkmssxrqetnzsszan9wawe.streamlit.app/)
 
 ---
 
