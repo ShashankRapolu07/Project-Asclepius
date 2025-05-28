@@ -2,8 +2,6 @@
 
 > Try directly at [Project Asclepius Streamlit App](https://project-asclepius-wynjpdbgtql4jcuqsjupny.streamlit.app/)
 
-This document outlines the technical architecture, design choices, and methodologies employed in the prototype of Project Asclepius, focusing on the "Bio-Innovation Horizon Scanning & Synthesis Engine" and the "Intelligent Insight Delivery & Visualization Interface." The goal is to provide 2070 Health with unparalleled foresight into the future of medicine and patient care.
-
 ---
 
 ## 🚀 Setup Instructions
@@ -70,6 +68,10 @@ Project-Asclepius/
 ├── app.py             # Main Streamlit app
 ├── requirements.txt   # Python dependencies
 ```
+
+---
+
+From here, the documentation outlines the technical architecture, design choices, and methodologies employed in the prototype of Project Asclepius, focusing on the **Bio-Innovation Horizon Scanning & Synthesis Engine** and the **Intelligent Insight Delivery & Visualization Interface**. The goal is to provide 2070 Health with unparalleled foresight into the future of medicine and patient care.
 
 ---
 
