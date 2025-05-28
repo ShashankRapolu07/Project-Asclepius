@@ -59,9 +59,6 @@ class IntelligentInsightNLUParser:
 Your primary function is to meticulously analyze a user's natural language query (NLQ) and transform it into a precise Python dictionary string. This dictionary will be used to improve information retrieval and downstream processing.
 Adhere STRICTLY to the output format and all instructions.
 
-**Current Date (for all relative dates and timelines):**
-{current_date}
-
 **User's Natural Language Query (NLQ):**
 {user_query}
 
@@ -143,7 +140,7 @@ Your entire response MUST be ONLY the Python dictionary string as described and 
         self.max_enhanced_queries = max_enhanced_queries
         
         self.prompt_template = PromptTemplate(
-            input_variables=["user_query", "current_date", "max_enhanced_queries"],
+            input_variables=["user_query", "max_enhanced_queries"],
             template=self.PROMPT_TEMPLATE_STR
         )
         self.nlu_agent = ChatGoogleGenerativeAI(
