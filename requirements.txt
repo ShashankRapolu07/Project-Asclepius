@@ -1,0 +1,12 @@
+streamlit
+python-dotenv
+qdrant_client
+langchain
+langchain-google-genai
+langchain-core
+pydantic
+langchain-qdrant
+hdbscan
+numpy
+matplotlib
+fastembed
