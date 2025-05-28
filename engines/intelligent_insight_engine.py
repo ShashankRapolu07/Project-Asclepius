@@ -107,7 +107,6 @@ Generate a Python dictionary string with the following content rules:
         * **`published_date`**: For filtering by publication date. The value must be a dictionary.
             * Allowed keys: "$gte" (greater than or equal to) and/or "$lte" (less than or equal to).
             * Date format MUST be ISO YYYY-MM-DD.
-            * If the NLQ includes relative time expressions (like “in the last 3 years,” “since January,” or “recent”), you MUST resolve them using the current date: {current_date}.
     * **Important:** Only extract filters if they are clearly indicated. Do not infer aggressively.
     
 **Handling Ambiguous, Nonsensical, or Very Short Queries:**
@@ -162,7 +161,6 @@ Your entire response MUST be ONLY the Python dictionary string as described and 
         try:
             raw_output = self._invoke_with_retry({
                 "user_query": user_query,
-                "current_date": datetime.date.today().isoformat(),
                 "max_enhanced_queries": self.max_enhanced_queries
             })
             
@@ -815,7 +813,7 @@ Your output MUST be a JSON string representing a list of plot specification dict
 
 **CRITICAL INSTRUCTIONS FOR GENERATING PLOT SPECIFICATIONS:**
 
-1.  **Understand the Goal:** Your primary goal is "Intelligent Insight Delivery" tailored to the user. This means you must *think*, analyze the `CONTEXT_DATA` in relation to the `user_query`, `user_role`, and `current_date`, and decide which (if any) visualizations would provide the most valuable insights. Do not just plot raw data if a synthesized view is more informative (e.g., trends, comparisons, distributions).
+1.  **Understand the Goal:** Your primary goal is "Intelligent Insight Delivery" tailored to the user. This means you must *think*, analyze the `CONTEXT_DATA` in relation to the `user_query`, `user_role`, and decide which (if any) visualizations would provide the most valuable insights. Do not just plot raw data if a synthesized view is more informative (e.g., trends, comparisons, distributions).
 
 2.  **Plot Selection & Quantity (Guided by User Role & Current Date):**
     * Based on the `user_query`, the `{user_role}`, and available `CONTEXT_DATA`, determine if visualizations are necessary and what type of plots would be most effective and insightful.
@@ -906,7 +904,6 @@ Begin generating plot specifications now:
                 "user_query",
                 "retrieved_context_str",
                 "max_plots",
-                "current_date",
                 "plot_tool_descriptions"
             ],
             template=self.PROMPT_TEMPLATE_STR
