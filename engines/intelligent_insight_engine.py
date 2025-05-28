@@ -805,8 +805,6 @@ Your output MUST be a JSON string representing a list of plot specification dict
 
 **User Role:** `{user_role}` *(This role (e.g., "research", "clinical", "strategic") should significantly influence your choice and prioritization of plots.)*
 
-**Current Date:** `{current_date}` *(Use this as a reference for temporal context, e.g., understanding "recent" data relative to this date, or interpreting publication dates for trend analysis.)*
-
 **Retrieved Context (string representation of a Python list of tuples: `(content_chunk, publication_date, citation_index)`):**
 `CONTEXT_DATA = {retrieved_context_str}`
 *(Note: In the `CONTEXT_DATA` above, each tuple represents a data snippet. The first element is the text content, the second is its publication date (string, may be empty), and the third is an integer citation index. A `citation_index` of -1 means the chunk is unciteable.)*
@@ -820,20 +818,19 @@ Your output MUST be a JSON string representing a list of plot specification dict
 1.  **Understand the Goal:** Your primary goal is "Intelligent Insight Delivery" tailored to the user. This means you must *think*, analyze the `CONTEXT_DATA` in relation to the `user_query`, `user_role`, and `current_date`, and decide which (if any) visualizations would provide the most valuable insights. Do not just plot raw data if a synthesized view is more informative (e.g., trends, comparisons, distributions).
 
 2.  **Plot Selection & Quantity (Guided by User Role & Current Date):**
-    * Based on the `user_query`, the `{user_role}`, the `{current_date}`, and available `CONTEXT_DATA`, determine if visualizations are necessary and what type of plots would be most effective and insightful.
+    * Based on the `user_query`, the `{user_role}`, and available `CONTEXT_DATA`, determine if visualizations are necessary and what type of plots would be most effective and insightful.
     * **Prioritize plots relevant to the `{user_role}`:**
         * For `"research"`: Focus on plots that reveal underlying data patterns, experimental results, scientific mechanisms, detailed comparisons, or synthesize evidence from multiple studies.
         * For `"clinical"`: Prioritize plots illustrating treatment efficacy, patient outcomes, diagnostic performance, epidemiological trends, or comparisons relevant to clinical decision-making.
-        * For `"strategic"`: Favor plots showing market trends, research activity over time (e.g., publication velocity), adoption rates, competitive landscapes, or the broader impact of innovations relative to the `{current_date}`.
-    * Use the `{current_date}` to contextualize the timeliness of data and the relevance of trends (e.g., analyzing data published in the last N months/years leading up to the `{current_date}`).
+        * For `"strategic"`: Favor plots showing market trends, research activity over time (e.g., publication velocity), adoption rates, competitive landscapes, or the broader impact of innovations.
     * Generate specifications for **at most {max_plots}** distinct plots. If no plots are relevant or possible from the context, output an empty list `[]`.
     * Consider complex plots (time-series, comparative, distributions, heatmaps of correlations if data allows) if they provide significant insight for the query and user role.
 
 3.  **Data Synthesis and Grounding (MANDATORY):**
     * All data (`x`, `y`, `values`, `sizes`, `matrix`, etc.) for each plot specification MUST be derived or synthesized *exclusively* from the `content_chunk` and `publication_date` elements within the **`CONTEXT_DATA`**.
-    * You can perform calculations (e.g., counting occurrences, grouping by date considering the `{current_date}` as a reference, extracting numerical values, calculating frequencies/percentages) on the context to create NEW data for plotting, but this new data must be entirely traceable to the provided context.
+    * You can perform calculations (e.g., counting occurrences, grouping by date as a reference, extracting numerical values, calculating frequencies/percentages) on the context to create NEW data for plotting, but this new data must be entirely traceable to the provided context.
     * **NO HALLUCINATION:** Never invent data or use external knowledge. The authenticity of the data is paramount.
-    * Utilize `publication_date` (from context) in conjunction with the `{current_date}` for relevant time-series analysis or chronological ordering.
+    * Utilize `publication_date` (from context)` for relevant time-series analysis or chronological ordering.
 
 4.  **Citations (MANDATORY):**
     * For each plot specification, you MUST provide a `citations` field. This field must be a list of *integer* `citation_index` values that directly support or were used to derive the data presented in that plot.
